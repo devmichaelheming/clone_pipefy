@@ -5,7 +5,9 @@ import { Container } from "./styles";
 
 function Board() {
   return (
-    <Container>
+    <
+      Container
+      >
       <List />
       <List />
       <List />
