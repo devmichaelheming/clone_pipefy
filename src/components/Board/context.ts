@@ -1,7 +1,9 @@
 import { createContext } from "react";
+
 import { ListProps } from "../List";
+
 interface BoardContextProps {
-  listing: Array<ListProps>;
+  lists: Array<ListProps>;
   move: (from: number, to: number) => void;
 }
 

@@ -2,9 +2,8 @@ import { Card } from "components";
 import React from "react";
 import { MdAdd } from "react-icons/md";
 
-import { Container } from "./styles";
-
 import BoardContext from "../Board/context";
+import { Container } from "./styles";
 
 export interface CardsProps {
   id: number;
@@ -22,9 +21,13 @@ export interface ListProps {
 
 type Props = {
   data: ListProps;
+  index: number;
 };
 
-function List({ data: { title, creatable, cards, done } }: Props) {
+function List({
+  data: { title, creatable, cards, done },
+  index: listIndex,
+}: Props) {
   return (
     <Container done={done}>
       <header>
@@ -38,7 +41,7 @@ function List({ data: { title, creatable, cards, done } }: Props) {
 
       <ul>
         {cards.map((card: CardsProps, index) => (
-          <Card key={card.id} index={index} data={card} />
+          <Card key={card.id} listIndex={listIndex} index={index} data={card} />
         ))}
       </ul>
     </Container>

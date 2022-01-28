@@ -77,7 +77,7 @@
             "error",
             {
                 "devDependencies": [
-                    "**/*.spec.js"
+                    "*/.spec.js"
                 ]
             }
         ],

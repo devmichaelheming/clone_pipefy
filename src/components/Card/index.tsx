@@ -2,13 +2,15 @@ import React, { useRef, useContext } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
 import BoardContext from "../Board/context";
-
 import { CardsProps } from "../List";
 import { Container, Label } from "./styles";
 
 interface ItemDragProps {
   indexItem: {
     index: number;
+  };
+  listIndexItem: {
+    listIndex: number;
   };
 }
 
@@ -25,17 +27,25 @@ interface IsDraggingProps {
 type Props = {
   data: CardsProps;
   index: number;
+  listIndex: number;
 };
 
-function Card({ data: { id, content, labels, user }, index }: Props) {
+function Card({
+  data: { id, content, labels, user },
+  index,
+  listIndex,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const { move, listing } = useContext(BoardContext);
+  const { move, lists } = useContext(BoardContext);
 
   const [{ isDragging }, dragRef]: any = useDrag(
     (): DragProps => ({
       item: {
         indexItem: {
           index,
+        },
+        listIndexItem: {
+          listIndex,
         },
       },
       type: "CARD",
@@ -49,6 +59,9 @@ function Card({ data: { id, content, labels, user }, index }: Props) {
   const [, dropRef] = useDrop({
     accept: "CARD",
     hover(item: ItemDragProps, monitor) {
+      const draggedListIndex = item.listIndexItem;
+      // const targetListIndex = listIndex;
+
       const { indexItem } = item;
       const draggedIndex = indexItem.index;
       const targetIndex = index;
