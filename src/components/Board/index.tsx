@@ -16,12 +16,12 @@ function Board() {
     console.log(from, to);
   }
 
-  const listing = useMemo(() => [lists, setLists], [lists]);
+  const listing = useMemo(() => lists, [lists]);
 
   return (
     <BoardContext.Provider value={{ listing, move }}>
       <Container>
-        {lists.map((list) => (
+        {lists.map((list: ListProps) => (
           <List key={list.title} data={list} />
         ))}
       </Container>
