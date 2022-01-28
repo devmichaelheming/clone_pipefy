@@ -29,9 +29,7 @@ type Props = {
 
 function Card({ data: { id, content, labels, user }, index }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const teste = useContext(BoardContext);
-
-  console.log("Context", teste);
+  const { move, listing } = useContext(BoardContext);
 
   const [{ isDragging }, dragRef]: any = useDrag(
     (): DragProps => ({
@@ -72,7 +70,7 @@ function Card({ data: { id, content, labels, user }, index }: Props) {
         return;
       }
 
-      // move(draggedIndex, targetIndex);
+      move(draggedIndex, targetIndex);
     },
   });
 
