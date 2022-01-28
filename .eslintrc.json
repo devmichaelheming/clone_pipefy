@@ -26,19 +26,17 @@
         "prettier"
     ],
     "rules": {
-        "camelcase": "off",
         "import/no-unresolved": "error",
+        "react/prop-types": "off",
+        "no-useless-return": "off",
+        "no-non-null-assertion": false,
         "@typescript-eslint/naming-convention": [
             "error",
             {
                 "selector": "interface",
                 "format": [
                     "PascalCase"
-                ],
-                "custom": {
-                    "regex": "^I[A-Z]",
-                    "match": true
-                }
+                ]
             }
         ],
         "class-methods-use-this": "off",
